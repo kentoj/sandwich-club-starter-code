@@ -66,6 +66,7 @@ public class DetailActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.description_tv)).setText(sandwich.getDescription());
     }
 
+//    pulled from https://stackoverflow.com/q/1751844/2084253
     static public String join(List<String> list, String conjunction) {
         StringBuilder sb = new StringBuilder();
         boolean first = true;
