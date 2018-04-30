@@ -30,47 +30,53 @@ public class Sandwich {
         return mainName;
     }
 
-    public void setMainName(String mainName) {
+    public Sandwich setMainName(String mainName) {
         this.mainName = mainName;
+        return this;
     }
 
     public List<String> getAlsoKnownAs() {
         return alsoKnownAs;
     }
 
-    public void setAlsoKnownAs(List<String> alsoKnownAs) {
+    public Sandwich setAlsoKnownAs(List<String> alsoKnownAs) {
         this.alsoKnownAs = alsoKnownAs;
+        return this;
     }
 
     public String getPlaceOfOrigin() {
         return placeOfOrigin;
     }
 
-    public void setPlaceOfOrigin(String placeOfOrigin) {
+    public Sandwich setPlaceOfOrigin(String placeOfOrigin) {
         this.placeOfOrigin = placeOfOrigin;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Sandwich setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public String getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public Sandwich setImage(String image) {
         this.image = image;
+        return this;
     }
 
     public List<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public Sandwich setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
+        return this;
     }
 }
