@@ -32,9 +32,9 @@ public class JsonUtils {
                 akaStr.add(aka.get(i).toString());
             }
 
-            String placeOfOrigin = sandwichJSON.getString(SANDWICH_PLACE_OF_ORIGIN);
-            String description = sandwichJSON.getString(SANDWICH_DESCRIPTION);
-            String image = sandwichJSON.getString(SANDWICH_IMAGE);
+            String placeOfOrigin = sandwichJSON.optString(SANDWICH_PLACE_OF_ORIGIN);
+            String description = sandwichJSON.optString(SANDWICH_DESCRIPTION);
+            String image = sandwichJSON.optString(SANDWICH_IMAGE);
 
             JSONArray ingredients = sandwichJSON.getJSONArray(SANDWICH_INGREDIENTS);
             List<String> ingredientsStr = new ArrayList<>();
