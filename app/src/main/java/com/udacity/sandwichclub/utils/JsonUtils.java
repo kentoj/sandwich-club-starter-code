@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class JsonUtils {
@@ -27,31 +28,36 @@ public class JsonUtils {
             JSONObject name = sandwichJSON.getJSONObject(SANDWICH_NAME);
             String mainName = name.optString(SANDWICH_MAIN_NAME);
             JSONArray aka = name.getJSONArray(SANDWICH_ALSO_KNOWN_AS);
-            List<String> akaStr = new ArrayList<>();
-            for (int i = 0; i < aka.length(); i++) {
-                akaStr.add(aka.get(i).toString());
-            }
 
             String placeOfOrigin = sandwichJSON.optString(SANDWICH_PLACE_OF_ORIGIN);
             String description = sandwichJSON.optString(SANDWICH_DESCRIPTION);
             String image = sandwichJSON.optString(SANDWICH_IMAGE);
 
             JSONArray ingredients = sandwichJSON.getJSONArray(SANDWICH_INGREDIENTS);
-            List<String> ingredientsStr = new ArrayList<>();
-            for (int i = 0; i < ingredients.length(); i++) {
-                ingredientsStr.add(ingredients.get(i).toString());
-            }
+            
             return new Sandwich()
                     .setMainName(mainName)
-                    .setAlsoKnownAs(akaStr)
+                    .setAlsoKnownAs(toStringList(aka))
                     .setDescription(description)
                     .setImage(image)
-                    .setIngredients(ingredientsStr)
+                    .setIngredients(toStringList(ingredients))
                     .setPlaceOfOrigin(placeOfOrigin);
 
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static List<String> toStringList(JSONArray array) {
+        List<String> stringList = new ArrayList<>();
+        try {
+            for (int i = 0; i < array.length(); i++) {
+                stringList.add(array.get(i).toString());
+            }
+        } catch (JSONException e) {
+            return stringList;
+        }
+        return stringList;
     }
 }
