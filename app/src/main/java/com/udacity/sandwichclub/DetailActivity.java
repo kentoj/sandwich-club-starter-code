@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,23 +71,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        alsoKnownTv.setText(join(sandwich.getAlsoKnownAs(), ","));
-        ingredientsTv.setText(join(sandwich.getIngredients(), ","));
+        alsoKnownTv.setText(TextUtils.join(",", sandwich.getAlsoKnownAs()));
+        ingredientsTv.setText(TextUtils.join(",", sandwich.getIngredients()));
         originTv.setText(sandwich.getPlaceOfOrigin());
         descriptionTv.setText(sandwich.getDescription());
     }
 
-    //    pulled from https://stackoverflow.com/q/1751844/2084253
-    static public String join(List<String> list, String conjunction) {
-        StringBuilder sb = new StringBuilder();
-        boolean first = true;
-        for (String item : list) {
-            if (first)
-                first = false;
-            else
-                sb.append(conjunction);
-            sb.append(item);
-        }
-        return sb.toString();
-    }
 }
