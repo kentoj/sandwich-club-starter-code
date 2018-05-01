@@ -18,10 +18,20 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    private TextView
+            alsoKnownTv,
+            ingredientsTv,
+            originTv,
+            descriptionTv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        alsoKnownTv = findViewById(R.id.also_known_tv);
+        ingredientsTv = findViewById(R.id.ingredients_tv);
+        originTv = findViewById(R.id.origin_tv);
+        descriptionTv = findViewById(R.id.description_tv);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
@@ -60,13 +70,13 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        ((TextView) findViewById(R.id.also_known_tv)).setText(join(sandwich.getAlsoKnownAs(), ","));
-        ((TextView) findViewById(R.id.ingredients_tv)).setText(join(sandwich.getIngredients(), ","));
-        ((TextView) findViewById(R.id.origin_tv)).setText(sandwich.getPlaceOfOrigin());
-        ((TextView) findViewById(R.id.description_tv)).setText(sandwich.getDescription());
+        alsoKnownTv.setText(join(sandwich.getAlsoKnownAs(), ","));
+        ingredientsTv.setText(join(sandwich.getIngredients(), ","));
+        originTv.setText(sandwich.getPlaceOfOrigin());
+        descriptionTv.setText(sandwich.getDescription());
     }
 
-//    pulled from https://stackoverflow.com/q/1751844/2084253
+    //    pulled from https://stackoverflow.com/q/1751844/2084253
     static public String join(List<String> list, String conjunction) {
         StringBuilder sb = new StringBuilder();
         boolean first = true;
